@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Treino">
+<meta name="description" content="Seu app de treino personalizado">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Treino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- SPLASH -->
+  <div id="splash" class="splash">
+    <div class="splash-inner">
+      <div class="splash-icon"><i class="ti ti-barbell"></i></div>
+      <h1 class="splash-title">Treino</h1>
+      <p class="splash-sub">Seu plano personalizado</p>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item active" data-page="home" onclick="navigate('home')">
+      <i class="ti ti-home"></i><span>Início</span>
+    </button>
+    <button class="nav-item" data-page="workout" onclick="navigate('workout')">
+      <i class="ti ti-barbell"></i><span>Treino</span>
+    </button>
+    <button class="nav-item" data-page="history" onclick="navigate('history')">
+      <i class="ti ti-chart-line"></i><span>Histórico</span>
+    </button>
+    <button class="nav-item" data-page="info" onclick="navigate('info')">
+      <i class="ti ti-info-circle"></i><span>Guia</span>
+    </button>
+  </nav>
+
+  <!-- PAGES -->
+  <main id="main">
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="page-inner">
+        <div class="home-header">
+          <div>
+            <p class="home-greeting" id="greeting">Bom dia</p>
+            <h2 class="home-name">Vamos treinar?</h2>
+          </div>
+          <div class="streak-badge" id="streak-badge">
+            <i class="ti ti-flame"></i>
+            <span id="streak-count">0</span>
+          </div>
+        </div>
+
+        <div class="week-strip" id="week-strip"></div>
+
+        <div class="today-card" id="today-card"></div>
+
+        <div class="stats-row" id="stats-row"></div>
+
+        <div class="last-section">
+          <p class="section-label">Esta semana</p>
+          <div id="week-summary"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKOUT -->
+    <div id="page-workout" class="page">
+      <div class="page-inner">
+        <div class="workout-day-nav" id="workout-day-nav"></div>
+        <div id="workout-content"></div>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div id="page-history" class="page">
+      <div class="page-inner">
+        <h2 class="page-title">Histórico</h2>
+        <div id="history-content"></div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div id="page-info" class="page">
+      <div class="page-inner">
+        <h2 class="page-title">Guia do treino</h2>
+        <div id="info-content"></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="gif.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
