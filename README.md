@@ -1,62 +1,108 @@
-# Treino App 💪
+# Atlas Fit — Treino pessoal
 
-App PWA mobile de treino personalizado. Dark theme, offline-ready, histórico persistente.
+App estático e instalável para registrar treinos pessoais, carga, repetições, descanso e evolução. Foi pensado para uso privado no GitHub Pages, sem backend, sem login e sem banco externo.
 
-## Stack
-- HTML + CSS + Vanilla JS (zero dependências)
-- PWA com Service Worker (instala no celular)
-- localStorage para persistência de dados
+## Principais recursos
 
-## Deploy no GitHub Pages (grátis)
+- Dashboard com treino do dia, aderência semanal, streak e volume.
+- Registro por série com carga, repetições, RPE e conclusão.
+- Timer de descanso flutuante.
+- Histórico de sessões finalizadas.
+- Gráfico de volume dos últimos treinos.
+- Cálculo de volume por músculo.
+- Melhores marcas estimadas por exercício.
+- Construtor de treino dentro do app: adicionar, remover e reordenar exercícios.
+- Backup em JSON e exportação CSV.
+- Importação de backup.
+- PWA offline com service worker.
+- Manifest corrigido para funcionar em subpasta do GitHub Pages.
+- Interface responsiva para celular.
+
+## Como rodar localmente
+
+Abra `index.html` direto no navegador ou use um servidor local simples:
 
 ```bash
-# 1. Crie um repositório no GitHub (ex: "treino-app")
-
-# 2. Clone e adicione os arquivos
-git clone https://github.com/SEU_USER/treino-app
-cd treino-app
-# Copie todos os arquivos desta pasta aqui
-
-# 3. Commit e push
-git add .
-git commit -m "Initial commit"
-git push origin main
-
-# 4. Ative o GitHub Pages
-# GitHub → Settings → Pages → Source: Deploy from branch → main → / (root)
-# Seu app vai estar em: https://SEU_USER.github.io/treino-app
+python -m http.server 8080
 ```
 
-## Instalar no celular como app
+Depois acesse:
 
-### Android (Chrome)
-1. Abra o site no Chrome
-2. Menu (⋮) → "Adicionar à tela inicial"
-
-### iPhone (Safari)
-1. Abra o site no Safari
-2. Botão de compartilhar → "Adicionar à Tela de Início"
-
-## Estrutura
+```text
+http://localhost:8080
 ```
-treino-app/
-├── index.html     # Estrutura da app
-├── style.css      # Estilos dark theme
-├── app.js         # Lógica principal
-├── data.js        # Dados dos treinos
-├── sw.js          # Service Worker (PWA/offline)
-├── manifest.json  # Manifesto PWA
+
+## Deploy no GitHub Pages
+
+1. Crie um repositório, por exemplo `atlas-fit`.
+2. Envie todos os arquivos desta pasta para a raiz do repositório.
+3. No GitHub, vá em **Settings → Pages**.
+4. Em **Source**, selecione **Deploy from a branch**.
+5. Escolha a branch `main` e a pasta `/root`.
+6. Acesse o endereço publicado pelo GitHub Pages.
+
+O manifest usa `start_url: "."` e o service worker usa caminhos relativos. Isso evita o erro comum de PWA quebrar quando o projeto fica em `https://usuario.github.io/repositorio/`.
+
+## Personalizar seus treinos
+
+Você pode editar de duas formas:
+
+### Pelo próprio app
+
+Abra **Biblioteca → Construtor de treino** e adicione/remova/reordene exercícios. As alterações ficam salvas no navegador.
+
+### Pelo código
+
+Edite `data.js`, no objeto `DEFAULT_PLAN`. Cada dia possui:
+
+- `id`
+- `day`
+- `label`
+- `focus`
+- `color`
+- `warmup`
+- `exercises`
+
+Cada exercício aceita:
+
+- `name`
+- `sets`
+- `reps`
+- `rest`
+- `muscles`
+- `secondary`
+- `equipment`
+- `tempo`
+- `cues`
+
+## Dados e privacidade
+
+Os dados ficam no `localStorage` do navegador. Isso significa:
+
+- não existe servidor;
+- não existe sincronização automática entre celular e computador;
+- limpar os dados do navegador apaga o histórico;
+- exporte backup JSON periodicamente.
+
+## Arquivos
+
+```text
+atlas-fit/
+├── index.html
+├── style.css
+├── app.js
+├── data.js
+├── sw.js
+├── manifest.json
+├── icon-192.png
+├── icon-512.png
 └── README.md
 ```
 
-## Personalizar
-- **Treinos**: edite `data.js` → `WORKOUT_DATA`
-- **Nutrição/Suplementos**: edite `data.js` → `INFO_DATA`
-- **Cores**: edite variáveis em `style.css` → `:root`
+## Próximas evoluções possíveis
 
-## Próximas features (sugestões)
-- [ ] Registro de peso por série
-- [ ] Gráfico de evolução de carga
-- [ ] Timer de descanso entre séries
-- [ ] Notificação de horário de treino
-- [ ] Exportar histórico como CSV
+- Fotos de evolução salvas localmente.
+- Deload automático por fadiga/RPE alto.
+- Tela de calendário mensal.
+- Comparação exercício por exercício.
+- Sincronização opcional com GitHub Gist ou Firebase.
