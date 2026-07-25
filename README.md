@@ -18,6 +18,15 @@ App estático e instalável para registrar treinos pessoais, carga, repetições
 - Manifest corrigido para funcionar em subpasta do GitHub Pages.
 - Interface responsiva para celular.
 
+  
+  INTERFACE-
+
+  <img width="512" height="606" alt="image" src="https://github.com/user-attachments/assets/4f9e7050-1ce6-447f-8248-614fff01f85b" />
+
+  <img width="523" height="617" alt="image" src="https://github.com/user-attachments/assets/6a161e4d-9fbe-4a16-8f4c-654df54166c6" />
+
+
+
 ## Como rodar localmente
 
 Abra `index.html` direto no navegador ou use um servidor local simples:
