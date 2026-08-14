@@ -10,22 +10,20 @@ App estático e instalável para registrar treinos pessoais, carga, repetições
 - Histórico de sessões finalizadas.
 - Gráfico de volume dos últimos treinos.
 - Cálculo de volume por músculo.
-- Melhores marcas estimadas por exercício.
+- Melhores marcas estimadas por exercício (1RM estimado pela fórmula de Epley).
 - Construtor de treino dentro do app: adicionar, remover e reordenar exercícios.
 - Backup em JSON e exportação CSV.
 - Importação de backup.
+- Migração automática de dados de versões anteriores.
 - PWA offline com service worker.
 - Manifest corrigido para funcionar em subpasta do GitHub Pages.
 - Interface responsiva para celular.
 
-  
-  INTERFACE-
+## Interface
 
-  <img width="512" height="606" alt="image" src="https://github.com/user-attachments/assets/4f9e7050-1ce6-447f-8248-614fff01f85b" />
+<img width="512" height="606" alt="Tela inicial do Atlas Fit" src="https://github.com/user-attachments/assets/4f9e7050-1ce6-447f-8248-614fff01f85b" />
 
-  <img width="523" height="617" alt="image" src="https://github.com/user-attachments/assets/6a161e4d-9fbe-4a16-8f4c-654df54166c6" />
-
-
+<img width="523" height="617" alt="Tela de treino do Atlas Fit" src="https://github.com/user-attachments/assets/6a161e4d-9fbe-4a16-8f4c-654df54166c6" />
 
 ## Como rodar localmente
 
@@ -41,13 +39,15 @@ Depois acesse:
 http://localhost:8080
 ```
 
+Servir por HTTP em vez de abrir o arquivo direto garante que o service worker e o comportamento de PWA funcionem como em produção.
+
 ## Deploy no GitHub Pages
 
 1. Crie um repositório, por exemplo `atlas-fit`.
-2. Envie todos os arquivos desta pasta para a raiz do repositório.
+2. Envie todos os arquivos para a raiz do repositório.
 3. No GitHub, vá em **Settings → Pages**.
 4. Em **Source**, selecione **Deploy from a branch**.
-5. Escolha a branch `main` e a pasta `/root`.
+5. Escolha a branch `main` e a pasta **root**.
 6. Acesse o endereço publicado pelo GitHub Pages.
 
 O manifest usa `start_url: "."` e o service worker usa caminhos relativos. Isso evita o erro comum de PWA quebrar quando o projeto fica em `https://usuario.github.io/repositorio/`.
@@ -58,7 +58,7 @@ Você pode editar de duas formas:
 
 ### Pelo próprio app
 
-Abra **Biblioteca → Construtor de treino** e adicione/remova/reordene exercícios. As alterações ficam salvas no navegador.
+Abra **Biblioteca → Construtor de treino** e adicione, remova ou reordene exercícios. As alterações ficam salvas no navegador.
 
 ### Pelo código
 
@@ -96,16 +96,15 @@ Os dados ficam no `localStorage` do navegador. Isso significa:
 ## Arquivos
 
 ```text
-atlas-fit/
-├── index.html
-├── style.css
-├── app.js
-├── data.js
-├── sw.js
-├── manifest.json
-├── icon-192.png
-├── icon-512.png
-└── README.md
+index.html
+style.css
+app.js
+data.js
+sw.js
+manifest.json
+icon-192.png
+icon-512.png
+README.md
 ```
 
 ## Próximas evoluções possíveis
